@@ -1,0 +1,10 @@
+db.sqlite3
+#python cache
+__pycache__/
+*.pyc
+#virtual environment
+ll_env/
+#environment variables(for secret keys)
+.env
+#collected static files(always recreated)
+staticfiles/
