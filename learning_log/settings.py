@@ -82,14 +82,7 @@ WSGI_APPLICATION = 'learning_log.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'learning_log',
-        'USER': 'postgres',
-        'PASSWORD': 'TheRiver!LionOrBox543',
-        'HOST': 'localhost',
-        'PORT': '5432', 
-    }
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
 }
 
 
