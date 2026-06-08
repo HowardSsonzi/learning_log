@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
+import dj_database_url
+from dotenv import load_dotenv
+load_dotenv()
+import os
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-pkbe86hk-5+9r*vrw*0z^nyj_t-12q=x&2vtx*oxaog6qtr5_w'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG','False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -81,6 +85,7 @@ WSGI_APPLICATION = 'learning_log.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite3')
 }
@@ -125,3 +130,4 @@ STATIC_URL = '/static/'
 #My settings
 LOGIN_URL = 'users:login'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
